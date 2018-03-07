@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="et_margins">20dp</dimen>
+    <dimen name="add_client_buttn_w">150dp</dimen>
+    <dimen name="add_client_bttn_l">75dp</dimen>
 </resources>

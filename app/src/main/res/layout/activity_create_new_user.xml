@@ -32,6 +32,13 @@
         android:layout_marginBottom="@dimen/et_margins"
         />
 
+    <Button
+        android:id="@+id/add_client_bttn"
+        android:layout_gravity="center_horizontal"
+        android:text="Add Client"
+        android:layout_width="@dimen/add_client_buttn_w"
+        android:layout_height="@dimen/add_client_bttn_l" />
+
 
 
 </LinearLayout>
