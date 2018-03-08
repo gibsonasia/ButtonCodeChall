@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     Button button;
     ListView listView;
 
+    public static int MAIN_RESULT = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         listView = findViewById(R.id.lv);
         button = findViewById(R.id.create_user_button);
 
+        //Will open new Activity to Add new user credentials
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,9 +45,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // retrofitCall();
+         retrofitCall();
     }
 
+    //Retrieve New user information from Create Activity
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == MAIN_RESULT) {
+            if (resultCode == RESULT_OK) {
+               User userResult = new User(data.getStringExtra(CreateNewUserActivity.USER_NAME),
+                       data.getStringExtra(CreateNewUserActivity.USER_EMAIL),
+                               data.getStringExtra(CreateNewUserActivity.CANDIDATE));
+                    //TODO connect Result to be POSTED
+            }
+        }
+    }
+
+
+    //Retrofit call
     private void retrofitCall() {
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -60,15 +79,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
 
+
                 List<User> userList = response.body();
+
 
                 String[] users = new String[userList.size()];
 
+                //To show each name of each user in list
                 for (int i = 0; i < userList.size(); i++) {
                     users[i] = userList.get(i).getName();
+
                 }
 
-                listView.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, users));
+                listView.setAdapter(new ArrayAdapter<String>(getApplicationContext(),
+                        android.R.layout.simple_list_item_1, users));
             }
 
             @Override

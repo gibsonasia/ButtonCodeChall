@@ -10,7 +10,7 @@
 
     <EditText
         android:id="@+id/name_et"
-        android:hint="Name"
+        android:hint="@string/name_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/et_margins"
@@ -18,7 +18,7 @@
 
     <EditText
         android:id="@+id/email_et"
-        android:hint="email"
+        android:hint="@string/email_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/et_margins"
@@ -26,7 +26,7 @@
 
     <EditText
         android:id="@+id/canditate_et"
-        android:hint="Candidate"
+        android:hint="@string/candidate_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/et_margins"
@@ -35,7 +35,7 @@
     <Button
         android:id="@+id/add_client_bttn"
         android:layout_gravity="center_horizontal"
-        android:text="Add Client"
+        android:text="@string/add_client_button"
         android:layout_width="@dimen/add_client_buttn_w"
         android:layout_height="@dimen/add_client_bttn_l" />
 

@@ -13,8 +13,12 @@ import com.gibson.a.fakebutton.R;
 
 public class CreateNewUserActivity extends AppCompatActivity {
 
-   public EditText name,email,candidate;
+    public EditText name, email, candidate;
     Button addClientBttn;
+
+    public static String USER_NAME = "com.gibson.a.fakebutton.USER_NAME";
+    public static String USER_EMAIL = "com.gibson.a.fakebutton.USER_EMAIL";
+    public static String CANDIDATE = "com.gibson.a.fakebutton.CANDIDATE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +33,15 @@ public class CreateNewUserActivity extends AppCompatActivity {
         addClientBttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               if(TextUtils.isEmpty(name.getText()) || TextUtils.isEmpty(name.getText())||
-                       TextUtils.isEmpty(email.getText())){
+                if (TextUtils.isEmpty(name.getText()) || TextUtils.isEmpty(name.getText()) ||
+                        TextUtils.isEmpty(email.getText())) {
 
-                   Toast.makeText(getApplicationContext(), "Check all feilds, try again", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.toast_check, Toast.LENGTH_LONG).show();
 
-               }
+                } else {
+                    sendUserData();
+                    finish();
+                }
 
 
             }
@@ -43,9 +50,16 @@ public class CreateNewUserActivity extends AppCompatActivity {
 
     }
 
-    public void sendUserData(View view){
+    //Method to collect data from fields to send to Main Activity
+    public void sendUserData() {
 
-        Intent intent = new Intent();
-        String name_field = name.getText().toString();
+        Intent intent = new Intent(this, MainActivity.class);
+        String nameField = name.getText().toString();
+        String emailField = name.getText().toString();
+        String candidateField = name.getText().toString();
+        intent.putExtra(USER_NAME, nameField);
+        intent.putExtra(USER_EMAIL, emailField);
+        intent.putExtra(CANDIDATE, candidateField);
+        setResult(RESULT_OK, intent);
     }
 }

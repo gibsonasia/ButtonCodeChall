@@ -22,7 +22,7 @@ public class User {
     @Expose
     private String candidate;
 
-    public User(int id, String name,String email, String candidate){
+    public User(String name, String email, String candidate){
 
         this.id = id;
         this.name = name;

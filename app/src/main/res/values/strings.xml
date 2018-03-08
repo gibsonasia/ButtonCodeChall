@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">FakeButton</string>
 
+    <!--CreateUser Activity-->
+    <string name="candidate_field">Candidate</string>
+    <string name="email_field">email</string>
+    <string name="name_field">Name</string>
+    <string name="add_client_button">Add Client</string>
+    <string name="toast_check">Check all feilds, try again</string>
+
 </resources>
